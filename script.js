@@ -1,16 +1,19 @@
 $(document).ready(() => {
 
+  //listing on the useer when clicking on save button
     $(".saveBtn").on("click", function() {
 
+      // assosite time and descr to the click
       var value = $(this).siblings(".description").val();
 
       var time = $(this).parent().attr("id");
   
- 
+     // save to local storage
       localStorage.setItem(time, value);
 
     });
-  
+
+   // to get the current time and compare it to a block time
     function hourUpdater() {
 
       var currentHour = moment().hours();
@@ -40,7 +43,7 @@ $(document).ready(() => {
   
     hourUpdater();
 
-    
+    // interval to check if the time need to be updated and load current date
     var interval = setInterval(hourUpdater, 15000);
     $("#hour-8 .description").val(localStorage.getItem("hour-8"));
     $("#hour-9 .description").val(localStorage.getItem("hour-9"));
